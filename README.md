@@ -87,20 +87,20 @@ Selanjutnya refresh Kembali browser, maka akan ditampilkan hasilnya yaotu halama
 ![Screenshot (75)](https://user-images.githubusercontent.com/65975985/122582575-7f992180-d082-11eb-875e-6d89c2f36a32.png)
 
 # Auto Routing
-Secara default fitur autoroute pada Codeiginiter sudah aktif. Untuk mengubah status autoroute dapat mengubah nilai variabelnya. Untuk menonaktifkan ubah nilai true menjadi false.
+Secara default fitur autoroute pada Codeiginiter sudah aktif. Untuk mengubah status autoroute dapat mengubah nilai variabelnya. Untuk menonaktifkan ubah nilai true menjadi false. 
 
 $routes->setAutoRoute(true);
 
 Tambahkan method baru pada Controller Page seperti berikut.
-public function tos()
-{
-echo "ini halaman Term of Services";
-}
+
+ public function tos()
+ {
+ echo "ini halaman Term of Services";
+ }
 
 ![Screenshot (76)](https://user-images.githubusercontent.com/65975985/122588429-49ab6b80-d089-11eb-8b8c-95cd5fce07c6.png)
 
 # Membuat View
-## Selanjutnya adalam membuat view untuk tampilan web agar lebih menarik. Buat file baru dengan nama about.php pada direktori view (app/view/about.php) kemudian isi kodenya seperti berikut.
 
 
 
