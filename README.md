@@ -64,7 +64,7 @@ Ketika diakses akan mucul tampilan error 404 file not found, itu artinya file/pa
 # Membuat Controller 
 Selanjutnya adalah membuat Controller Page. Buat file baru dengan nama page.php pada direktori Controller kemudian isi kodenya seperti berikut.
 
-<?php
+`<addr>` <?php
 namespace App\Controllers;
 class Page extends BaseController
 {
