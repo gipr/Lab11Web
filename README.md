@@ -25,3 +25,45 @@ Arahkan lokasi direktori sesuai dengan direktori kerja project dibuat (xampp/htd
 # Mengaktifkan mode Debug
 Codeigniter 4 menyediakan fitur debugging untuk memudahkan developer untuk mengetahui pesan error apabila terjadi kesalahan dalam membuat kode program. Secara default fitur ini belum aktif. Ketika terjadi error pada aplikasi akan ditampilkan pesan kesalahan seperti berikut.
 ![Screenshot (70)](https://user-images.githubusercontent.com/65975985/122580134-d81aef80-d07f-11eb-9be6-6d7c20407d8c.png)
+Semua jenis error akan ditampilkan sama. Untuk memudahkan mengetahui jenis errornya, maka perlu diaktifkan mode debugging dengan mengubah nilai konfigurasi pada environment variable CI_ENVIRINMENT menjadi development.
+![Screenshot (71)](https://user-images.githubusercontent.com/65975985/122580226-ee28b000-d07f-11eb-97c7-60b48fa1d4d0.png)
+Ubah nama file env menjadi .env kemudian buka file tersebut dan ubah nilai variable CI_ENVIRINMENT menjadi development.
+
+# Struktur Direktori
+Untuk lebih memahami Framework Codeigniter 4 perlu mengetahui struktur direktori dan file yang ada. Buka pada Windows Explorer atau dari Visual Studio Code -> Open Folder. Terdapat beberapa direktori dan file yang perlu dipahami fungsi dan kegunaannya. • .github folder ini kita butuhkan untuk konfigurasi repo github, seperti konfigurasi untuk build dengan github action; • app folder ini akan berisi kode dari aplikasi yang kita kembangkan; • public folder ini berisi file yang bisa diakses oleh publik, seperti file index.php, robots.txt, favicon.ico, ads.txt, dll; • tests folder ini berisi kode untuk melakukan testing dengna PHPunit; • vendor folder ini berisi library yang dibutuhkan oleh aplikasi, isinya juga termasuk kode core dari system CI. • writable folder ini berisi file yang ditulis oleh aplikasi. Nantinya, kita bisa pakai untuk menyimpan file yang di-upload, logs, session, dll. Sedangkan file-file yang berada pada root direktori CI sebagai berikut. • .env adalah file yang berisi variabel environment yang dibutuhkan oleh aplikasi. • .gitignore adalah file yang berisi daftar nama file dan folder yang akan diabaikan oleh Git. • build adalah script untuk mengubah versi codeigniter yang digunakan. Ada versi release (stabil) dan development (labil). • composer.json adalah file JSON yang berisi informasi tentang proyek dan daftar library yang dibutuhkannya. File ini digunakan oleh Composer sebagai acuan. • composer.lock adalah file yang berisi informasi versi dari libraray yang digunakan aplikasi. • license.txt adalah file yang berisi penjelasan tentang lisensi Codeigniter; • phpunit.xml.dist adalah file XML yang berisi konfigurasi untuk PHPunit. • README.md adalah file keterangan tentang codebase CI. Ini biasanya akan dibutuhkan pada repo github atau gitlab. • spark adalah program atau script yang berfungsi untuk menjalankan server, generate kode, dll.
+![Screenshot (72)](https://user-images.githubusercontent.com/65975985/122580363-11ebf600-d080-11eb-94c9-b8e533b5b3ee.png)
+Fokus kita pada folder app, dimana folder tersebut adalah area kerja kita untuk membuat aplikasi. Dan folder public untuk menyimpan aset web seperti css, gambar, javascript, dll.
+
+# Membuat Route Baru
+Tambahkan kode berikut di dalam Routes.php
+$routes->get('/about', 'Page::about');
+$routes->get('/contact', 'Page::contact');
+$routes->get('/faqs', 'Page::faqs');
+Untuk mengetahui route yang ditambahkan sudah benar, buka CLI dan jalankan perintah berikut.
+- php spark routes
+![Screenshot (73)](https://user-images.githubusercontent.com/65975985/122580812-90e12e80-d080-11eb-99f6-7dd582f072c3.png)
+Selanjutnya coba akses route yang telah dibuat dengan mengakses alamat url http://localhost:8080/about
+![Screenshot (74)](https://user-images.githubusercontent.com/65975985/122580895-a6eeef00-d080-11eb-954c-20e24494bfa0.png)
+Ketika diakses akan mucul tampilan error 404 file not found, itu artinya file/page tersebut tidak ada. Untuk dapat mengakses halaman tersebut, harus dibuat terlebih dahulu Contoller yang sesuai dengan routing yang dibuat yaitu Contoller Page.
+
+# Membuat Controller 
+Selanjutnya adalah membuat Controller Page. Buat file baru dengan nama page.php pada direktori Controller kemudian isi kodenya seperti berikut.
+<?php
+namespace App\Controllers;
+class Page extends BaseController
+{
+public function about()
+{
+echo "Ini halaman About";
+}
+public function contact()
+{
+echo "Ini halaman Contact";
+}
+public function faqs()
+{
+echo "Ini halaman FAQ";
+}
+}
+
+
