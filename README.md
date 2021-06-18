@@ -22,7 +22,9 @@ untuk melakukan instalasi Codeigniter 4 dapat dilakukan dengan dua cara, yaitu c
 
 # Menjalankan Command Line Interface
 Codeigniter 4 menyediakan CLI untuk mempermudah proses development. Untuk mengakses CLI buka terminal/command prompt.
+
 ![Screenshot (68)](https://user-images.githubusercontent.com/65975985/122579894-9722db00-d07f-11eb-9cbe-1e6fe90be776.png)
+
 Arahkan lokasi direktori sesuai dengan direktori kerja project dibuat (xampp/htdocs/lab11_ci/ci4/) Perintah yang dapat dijalankan untuk memanggil CLI Codeigniter adalah:
 
 ![Screenshot (69)](https://user-images.githubusercontent.com/65975985/122579919-9e49e900-d07f-11eb-97fd-da964523eef1.png)
@@ -61,6 +63,7 @@ Ketika diakses akan mucul tampilan error 404 file not found, itu artinya file/pa
 
 # Membuat Controller 
 Selanjutnya adalah membuat Controller Page. Buat file baru dengan nama page.php pada direktori Controller kemudian isi kodenya seperti berikut.
+
 <?php
 namespace App\Controllers;
 class Page extends BaseController
