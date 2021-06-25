@@ -201,5 +201,47 @@ Selanjutnya refresh tampilan pada alamat http://localhost:8080/about
 
 ![Screenshot (79)](https://user-images.githubusercontent.com/65975985/122590491-d820ec80-d08b-11eb-91e1-d9d21e74325f.png)
 
+# Praktikum 12
+# Buat database
+
+    CREATE DATABASE lab_ci4;
+
+# Buat tabel
+
+    CREATE TABLE artikel (
+     id INT(11) auto_increment,
+     judul VARCHAR(200) NOT NULL,
+     isi TEXT,
+     gambar VARCHAR(200),
+     status TINYINT(1) DEFAULT 0,
+     slug VARCHAR(200),
+     PRIMARY KEY(id)
+    );
+   
+# Konfigurasi koneksi database
+
+Selanjutnya membuat konfigurasi untuk menghubungkan dengan database server. Konfigurasi dapat dilakukan dengan du acara, yaitu pada file app/config/database.php atau menggunakan file .env. Pada praktikum ini kita gunakan konfigurasi pada file .env.
+
+![Screenshot (85)](https://user-images.githubusercontent.com/65975985/123419594-98568980-d5e4-11eb-999f-1f17c874a121.png)
+
+# Membuat model
+
+Selanjutnya adalah membuat Model untuk memproses data Artikel. Buat file baru pada direktori app/Models dengan nama ArtikelModel.php
+
+![Screenshot (86)](https://user-images.githubusercontent.com/65975985/123420021-292d6500-d5e5-11eb-8964-bcdd8a21e072.png)
+
+# Membuat Controller
+
+Buat Controller baru dengan nama Artikel.php pada direktori app/Controllers.
+
+![Screenshot (87)](https://user-images.githubusercontent.com/65975985/123420308-9c36db80-d5e5-11eb-9bea-89c8c507f98c.png)
+
+# Membuat View
+
+Buat direktori baru dengan nama artikel pada direktori app/views, kemudian buat file baru dengan nama index.php.
+
+
+
+
 
 
