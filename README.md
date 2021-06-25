@@ -1,3 +1,4 @@
+![Screenshot (97)](https://user-images.githubusercontent.com/65975985/123424026-7a8c2300-d5ea-11eb-9c25-3e1e0730a0a7.png)
 # Lab11Web
 
 1. Buat folder baru dengan nama lab11_php_ci pada docroot webserver (htdocs)
@@ -279,6 +280,109 @@ Buka Kembali file app/config/Routes.php, kemudian tambahkan routing untuk artike
 Menu admin adalah untuk proses CRUD data artikel. Buat method baru pada Controller Artikel dengan nama admin_index().
 
 dan Selanjutnya buat view untuk tampilan admin dengan nama admin_index.php
+
+![Screenshot (97)](https://user-images.githubusercontent.com/65975985/123424053-84ae2180-d5ea-11eb-8a11-15757d14a452.png)
+
+Tambahkan routing untuk menu admin seperti berikut:
+
+    $routes->group('admin', function($routes) {
+    $routes->get('artikel', 'Artikel::admin_index');
+    $routes->add('artikel/add', 'Artikel::add');
+    $routes->add('artikel/edit/(:any)', 'Artikel::edit/$1');
+    $routes->get('artikel/delete/(:any)', 'Artikel::delete/$1');
+    });
+   
+Setelah itu buat template header dan footer baru untuk Halaman Admin. Buat file baru dengan nama admin_header.php pada direktori app/view/template
+
+![Screenshot (98)](https://user-images.githubusercontent.com/65975985/123424587-3d746080-d5eb-11eb-8226-f282623e07af.png)
+
+Akses menu admin dengan url http://localhost:8080/admin/artikel
+
+![Screenshot (99)](https://user-images.githubusercontent.com/65975985/123424631-4ebd6d00-d5eb-11eb-8f47-75bf8f255eda.png)
+
+# Menambah Data Artikel
+
+Tambahkan fungsi/method baru pada Controller Artikel dengan nama add().
+
+    public function add()
+    {
+    // validasi data.
+    $validation = \Config\Services::validation();
+    $validation->setRules(['judul' => 'required']);
+    $isDataValid = $validation->withRequest($this->request)->run();
+    if ($isDataValid)
+    {
+    $artikel = new ArtikelModel();
+    $artikel->insert([
+    'judul' => $this->request->getPost('judul'),
+    'isi' => $this->request->getPost('isi'),
+    'slug' => url_title($this->request->getPost('judul')),
+    ]);
+    return redirect('admin/artikel');
+    }
+    $title = "Tambah Artikel";
+    return view('artikel/form_add', compact('title'));
+    }
+    
+![Screenshot (100)](https://user-images.githubusercontent.com/65975985/123424765-7a405780-d5eb-11eb-99d7-87bb6f5783e4.png)
+
+# Mengubah Data
+
+Tambahkan fungsi/method baru pada Controller Artikel dengan nama edit()
+
+    public function edit($id)
+    {
+    $artikel = new ArtikelModel();
+    // validasi data.
+    $validation = \Config\Services::validation();
+    $validation->setRules(['judul' => 'required']);
+    $isDataValid = $validation->withRequest($this->request)->run();
+    if ($isDataValid)
+    {
+    $artikel->update($id, [
+    'judul' => $this->request->getPost('judul'),
+    'isi' => $this->request->getPost('isi'),
+    ]);
+    return redirect('admin/artikel');
+    }
+    // ambil data lama
+    $data = $artikel->where('id', $id)->first();
+    $title = "Edit Artikel";
+    return view('artikel/form_edit', compact('title', 'data'));
+    }
+    
+Kemudian buat view untuk form tambah dengan nama form_edit.php
+
+    <?= $this->include('template/admin_header'); ?>
+    <h2><?= $title; ?></h2>
+    <form action="" method="post">
+    <p>
+    <input type="text" name="judul" value="<?= $data['judul'];?>" >
+    </p>
+    <p>
+    <textarea name="isi" cols="50" rows="10"><?=
+    $data['isi'];?></textarea>
+    </p>
+    <p><input type="submit" value="Kirim" class="btn btn-large"></p>
+    </form>
+    <?= $this->include('template/admi!
+    n_footer'); ?>
+    
+![Screenshot (101)](https://user-images.githubusercontent.com/65975985/123424955-b5db2180-d5eb-11eb-95e4-fb1bb421aa16.png)
+
+# Menghapus Data
+
+Tambahkan fungsi/method baru pada Controller Artikel dengan nama delete().
+
+    public function delete($id)
+    {
+    $artikel = new ArtikelModel();
+    $artikel->delete($id);
+    return redirect('admin/artikel');
+    }
+
+
+
 
 
 
