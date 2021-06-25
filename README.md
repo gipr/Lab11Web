@@ -240,6 +240,52 @@ Buat Controller baru dengan nama Artikel.php pada direktori app/Controllers.
 
 Buat direktori baru dengan nama artikel pada direktori app/views, kemudian buat file baru dengan nama index.php.
 
+![Screenshot (88)](https://user-images.githubusercontent.com/65975985/123420941-680fea80-d5e6-11eb-9f87-145a94ff2d62.png)
+
+Selanjutnya buka browser kembali, dengan mengakses url http://localhost:8080/artikel
+
+![Screenshot (89)](https://user-images.githubusercontent.com/65975985/123420991-7b22ba80-d5e6-11eb-8efc-ae8cf5129515.png)
+
+Belum ada data yang diampilkan. Kemudian coba tambahkan beberapa data pada database agar dapat ditampilkan datanya.
+
+![Screenshot (90)](https://user-images.githubusercontent.com/65975985/123421034-8aa20380-d5e6-11eb-825c-0a9225afda4d.png)
+
+Refresh kembali browser, sehingga akan ditampilkan hasilnya.
+
+![Screenshot (91)](https://user-images.githubusercontent.com/65975985/123421097-9b527980-d5e6-11eb-990f-dba99ecbee8a.png)
+
+# Membuat tampilan detail artikel
+
+Tampilan pada saat judul berita di klik maka akan diarahkan ke halaman yang berbeda. Tambahkan fungsi baru pada Controller Artikel dengan nama view().
+
+![Screenshot (92)](https://user-images.githubusercontent.com/65975985/123421543-2c295500-d5e7-11eb-9116-a7d88f452326.png)
+
+# Membuat View Detail
+
+Buat view baru untuk halaman detail dengan nama app/views/artikel/detail.php.
+
+![Screenshot (93)](https://user-images.githubusercontent.com/65975985/123421964-bec9f400-d5e7-11eb-9712-113058ad8c9b.png)
+
+# Membuat Routing untuk artikel detail
+
+Buka Kembali file app/config/Routes.php, kemudian tambahkan routing untuk artikel detail.
+
+![Screenshot (95)](https://user-images.githubusercontent.com/65975985/123422986-2c2a5480-d5e9-11eb-8de4-ebef84bf7f69.png)
+
+![Screenshot (96)](https://user-images.githubusercontent.com/65975985/123423029-39474380-d5e9-11eb-9f04-309e0b59175c.png)
+
+# Membuat menu Admin
+
+Menu admin adalah untuk proses CRUD data artikel. Buat method baru pada Controller Artikel dengan nama admin_index().
+
+dan Selanjutnya buat view untuk tampilan admin dengan nama admin_index.php
+
+
+
+
+
+
+
 
 
 
